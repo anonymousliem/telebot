@@ -1,0 +1,14 @@
+version: '3.7'
+
+services:
+
+  sample:
+    container_name: scdscundip
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - '.:/app'
+      - '/app/node_modules'
+    ports:
+      - 3001:3000
