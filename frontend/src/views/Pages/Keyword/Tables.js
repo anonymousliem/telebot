@@ -58,39 +58,23 @@ class Tables extends Component {
   };
 
  
-  handleSubmitEditBuku = () => {
+  handleSubmitEditKeyword = () => {
     const Data = {
-      judul_buku: this.state.judul_buku,
-      id_user: sessionStorage.getItem("id_session"),
-      penulis: this.state.penulis,
-      tahun_terbit: this.state.tahun_terbit,
-      penerbit: this.state.penerbit,
-      jenis: this.state.jenis,
-      jumlah: this.state.jumlah,
-      foto: this.state.foto,
+      keyword: this.state.keyword,
+      results: this.state.hasil
     };
 
     if (
-      this.state.judul_buku === null ||
-      this.state.judul_buku === "" ||
-      this.state.penulis === null ||
-      this.state.penulis === "" ||
-      this.state.tahun_terbit === null ||
-      this.state.tahun_terbit === "" ||
-      this.state.penerbit === null ||
-      this.state.penerbit === "" ||
-      this.state.jenis === null ||
-      this.state.jenis === "" ||
-      this.state.jumlah === null ||
-      this.state.jumlah === "" ||
-      this.state.foto === null ||
-      this.state.foto === ""
+      this.state.keyword === null ||
+      this.state.keyword === "" ||
+      this.state.hasil === null ||
+      this.state.hasil === "" 
     ) {
       alert("tidak boleh ada data yang kosong");
     } else {
       axios({
         method: "PUT",
-        url: urlKeyword + this.state.id_buku,
+        url: urlKeyword + this.state.id_keyword,
         data: Data,
       })
         .then((data) => {
@@ -143,14 +127,10 @@ class Tables extends Component {
   };
 
 
-  handleAddBooks = () => {
-    if (this.state.exist === false) {
-      alert("Please Complete Your Profile Before Add Book");
-    } else {
+  handleAddKeywords = () => {
       this.setState({
         showAddBook: true,
       });
-    }
   };
 
   handleClose = () => {
@@ -165,23 +145,15 @@ class Tables extends Component {
   infoDetails = (result) => {
     this.setState({
       show: true,
-      judul_buku: result.judul_buku,
-      foto: result.foto,
-      penulis: result.penulis,
-      tahun_terbit: result.tahun_terbit,
-      penerbit: result.penerbit,
-      jenis: result.jenis,
-      jumlah: result.jumlah,
-      pemilik: result.nama,
-      no_telepon: result.no_telepon,
-      asal: result.asal,
+      keyword: result.keyword,
+      hasil: result.results,
     });
   };
 
-  handleDeleteBook = (result) => {
+  handleDeleteKeyword = (result) => {
     axios({
       method: "delete",
-      url: urlKeyword + result.id_buku,
+      url: urlKeyword + result.id_keyword,
     })
       .then((data) => {
         alert("berhasil dihapus");
@@ -195,20 +167,14 @@ class Tables extends Component {
   handleEdit = (results) => {
     axios({
       method: "get",
-      url: urlKeyword + results.id_buku,
+      url: urlKeyword + results.id_keyword,
     })
       .then((data) => {
         this.setState({
           showEdit: true,
-          judul_buku: data.data.response[0].judul_buku,
-          id_user: data.data.response[0].id_user,
-          penulis: data.data.response[0].penulis,
-          tahun_terbit: data.data.response[0].tahun_terbit,
-          penerbit: data.data.response[0].penerbit,
-          jenis: data.data.response[0].jenis,
-          jumlah: data.data.response[0].jumlah,
-          foto: data.data.response[0].foto,
-          id_buku: data.data.response[0].id_buku,
+          keyword: data.data.response[0].keyword,
+          hasil: data.data.response[0].results,
+          id_keyword : results.id_keyword
         });
       })
       .catch((err) => {
@@ -272,10 +238,10 @@ class Tables extends Component {
               className="btn btn-danger"
               onClick={() => {
                 const confirmBox = window.confirm(
-                  "Do you really want to delete this book?"
+                  "Do you really want to delete this keyword?"
                 );
                 if (confirmBox === true) {
-                  this.handleDeleteBook(results);
+                  this.handleDeleteKeyword(results);
                 }
               }}
             >
@@ -350,69 +316,19 @@ class Tables extends Component {
             <Modal.Title>DETAILS</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <center>
-              <img
-                src={this.state.foto}
-                alt={this.state.foto}
-                style={{ maxHeight: "150px" }}
-              />
-            </center>
-            <br />
             <table responsive striped>
               <thead></thead>
               <tbody>
                 <tr>
-                  <td>Judul</td>
+                  <td>Keyword</td>
                   <td>:</td>
-                  <td>{this.state.judul_buku}</td>
+                  <td>{this.state.keyword}</td>
                 </tr>
 
                 <tr>
-                  <td>Penulis</td>
+                  <td>Result</td>
                   <td>:</td>
-                  <td>{this.state.penulis}</td>
-                </tr>
-
-                <tr>
-                  <td>Tahun Terbit</td>
-                  <td>:</td>
-                  <td>{this.state.tahun_terbit}</td>
-                </tr>
-
-                <tr>
-                  <td>Penerbit</td>
-                  <td>:</td>
-                  <td>{this.state.penerbit}</td>
-                </tr>
-
-                <tr>
-                  <td>Jenis</td>
-                  <td>:</td>
-                  <td>{this.state.jenis}</td>
-                </tr>
-
-                <tr>
-                  <td>Jumlah</td>
-                  <td>:</td>
-                  <td>{this.state.jumlah}</td>
-                </tr>
-
-                <tr>
-                  <td>Pemilik</td>
-                  <td>:</td>
-                  <td>{this.state.pemilik}</td>
-                </tr>
-
-                <tr>
-                  <td>No Telepon</td>
-                  <td>:</td>
-                  <td>{this.state.no_telepon}</td>
-                </tr>
-
-                <tr>
-                  <td>Alamat</td>
-                  <td>:</td>
-                  <td>{this.state.asal}</td>
+                  <td>{this.state.hasil}</td>
                 </tr>
               </tbody>
             </table>
@@ -427,64 +343,24 @@ class Tables extends Component {
         {/*Modal EDIT */}
         <Modal show={this.state.showEdit} onHide={this.handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>EDIT Buku</Modal.Title>
+            <Modal.Title>EDIT Keyword</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <Form>
-              Judul Buku
+              Keyword
               <InputGroup className="mb-3">
                 <Input
                   type="text"
                   onChange={this.handleKeyword}
-                  placeholder={this.state.judul_buku}
+                  placeholder={this.state.keyword}
                 />
               </InputGroup>
-              Penulis
+              Result
               <InputGroup className="mb-3">
                 <Input
-                  type="text"
+                  type="textarea"
                   onChange={this.handleResults}
-                  placeholder={this.state.penulis}
-                />
-              </InputGroup>
-              Tahun Terbit
-              <InputGroup className="mb-3">
-                <Input
-                  type="text"
-                  onChange={this.handleTahun}
-                  placeholder={this.state.tahun_terbit}
-                />
-              </InputGroup>
-              Penerbit
-              <InputGroup className="mb-3">
-                <Input
-                  type="text"
-                  onChange={this.handlePenerbit}
-                  placeholder={this.state.penerbit}
-                />
-              </InputGroup>
-              Jenis
-              <InputGroup className="mb-3">
-                <Input
-                  type="text"
-                  onChange={this.handleJenis}
-                  placeholder={this.state.jenis}
-                />
-              </InputGroup>
-              Jumlah
-              <InputGroup className="mb-3">
-                <Input
-                  type="text"
-                  onChange={this.handleJumlah}
-                  placeholder={this.state.jumlah}
-                />
-              </InputGroup>
-              Foto
-              <InputGroup className="mb-3">
-                <Input
-                  type="text"
-                  onChange={this.handleFoto}
-                  placeholder={this.state.foto}
+                  placeholder={this.state.hasil}
                 />
               </InputGroup>
             </Form>
@@ -495,7 +371,7 @@ class Tables extends Component {
             </Button>
             <Button
               className="btn btn-info"
-              onClick={this.handleSubmitEditBuku}
+              onClick={this.handleSubmitEditKeyword}
             >
               Save Changes
             </Button>
@@ -517,7 +393,7 @@ class Tables extends Component {
                           style={{ marginLeft: 10 }}
                           color="success"
                           className="px-4"
-                          onClick={this.handleAddBooks}
+                          onClick={this.handleAddKeywords}
                         >
                           Add Keyword
                         </Button>

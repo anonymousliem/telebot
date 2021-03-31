@@ -19,7 +19,7 @@ class App extends Component {
       <HashRouter>
           <React.Suspense fallback={loading()}>
             <Switch>
-            <Route exact path="/books/mybook" name="List MY Books Page" render={props => <MyBook {...props}/>} />
+            <Route exact path="/keyword/list" name="List MY Books Page" render={props => <MyBook {...props}/>} />
             {/* <Route exact path="/account/editaccount/:id" name="Edit Account Page" render={props => <Editaccount {...props}/>} /> */}
 
               
