@@ -25,9 +25,8 @@ class Tables extends Component {
       currentPage: 1,
       resultsPerPage: 40,
       show: false,
-      showImage: false,
       file: null,
-      showAddBook: false,
+      showAddKeyword: false,
       keyword: "",
       hasil : "",
       showEdit: false,
@@ -52,11 +51,6 @@ class Tables extends Component {
       currentPage: Number(event.target.id),
     });
   }
-
-  onFileChangeImage = (e) => {
-    this.setState({ file: e.target.files[0] });
-  };
-
  
   handleSubmitEditKeyword = () => {
     const Data = {
@@ -129,15 +123,14 @@ class Tables extends Component {
 
   handleAddKeywords = () => {
       this.setState({
-        showAddBook: true,
+        showAddKeyword: true,
       });
   };
 
   handleClose = () => {
     this.setState({
       show: false,
-      showImage: false,
-      showAddBook: false,
+      showAddKeyword: false,
       showEdit: false,
     });
   };
@@ -276,7 +269,7 @@ class Tables extends Component {
     return (
       <div>
         {/*Modal Add */}
-        <Modal show={this.state.showAddBook} onHide={this.handleClose}>
+        <Modal show={this.state.showAddKeyword} onHide={this.handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>Add Keyword</Modal.Title>
           </Modal.Header>

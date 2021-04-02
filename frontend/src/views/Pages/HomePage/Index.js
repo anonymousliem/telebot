@@ -7,7 +7,6 @@ import {
   Col,
   Card,
   CardBody,
-  Button,
   CardTitle,
   CardText,
   CardImg,
@@ -35,28 +34,15 @@ class HomePage extends Component {
                 </h1>
               </center>
               <p>
-              An application to improve reading literacy in Indonesia through a website that includes a feature to view books that are available to borrow and can be obtained easily because the book owners can share about their books to those who have the interest to read so that the website can make it easier for users to find the desired book by looking at the stock of books owned by other people and would be able to read the book without buying it or come to the library directly. The purpose of the application is to increase the level of reading literacy in Indonesia and to reach out Sustainable Development Goals number 4 about quality education.
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
               </p>
-              <center>
-                <div>
-                  <a href="/#/register">
-                    <Button
-                      color="danger"
-                      style={{ width: "50%", height: "5rem" }}
-                    >
-                      <p style={{ fontSize: "30px" }}>
-                        <b>REGISTER</b>
-                      </p>
-                    </Button>
-                  </a>
-                </div>
-              </center>
             </Col>
           </Row>
         </Container>
 
         <Container>
           <Row xs="1" sm="1" md="3" style={{ marginTop: "2%" }}>
+            <Col></Col>
             <Col>
               <Card>
                 <CardImg
@@ -69,48 +55,15 @@ class HomePage extends Component {
                 <CardBody>
                   <CardTitle tag="h5">Muslim</CardTitle>
                   <CardText>
-                    Member of DSC Diponegoro University
+                   21120117140032
                   </CardText>
                 </CardBody>
               </Card>
             </Col>
-            <Col>
-              <Card>
-                <CardImg
-                  top
-                  width="100%"
-                  style={{ height: "10%" }}
-                  src="https://res.cloudinary.com/startup-grind/image/upload/c_fill,dpr_2.0,f_auto,g_center,h_250,q_auto:good,w_250/v1/gcs/platform-data-dsc/avatars/arifatul_khasanah.png"
-                  alt="Card image cap"
-                />
-                <CardBody>
-                  <CardTitle tag="h5">Arifatul Khasanah</CardTitle>
-                  <CardText>
-                  Member of DSC Diponegoro University
-                  </CardText>
-                </CardBody>
-              </Card>
-            </Col>
-            <Col>
-              <Card>
-                <CardImg
-                  top
-                  width="100%"
-                  style={{ height: "10%" }}
-                  src="https://res.cloudinary.com/startup-grind/image/upload/c_fill,dpr_2.0,f_auto,g_center,h_250,q_auto:good,w_250/v1/gcs/platform-data-dsc/avatars/erika_simanjuntak.jpg"
-                  alt="Erika"
-                />
-                <CardBody>
-                  <CardTitle tag="h5">Erika Simanjuntak</CardTitle>
-                  <CardText>
-                  Member of DSC Diponegoro University
-                  </CardText>
-                </CardBody>
-              </Card>
-            </Col>
+            <Col></Col>
           </Row>
           <center>
-            <b>CODE WITH &#10084; BY DSC UNDIP</b>
+            <b>CODE WITH &#10084; BY Muslim</b>
           </center>
         </Container>
       </div>

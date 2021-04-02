@@ -15,8 +15,8 @@ class DefaultFooter extends Component {
 
     return (
       <React.Fragment>
-        <span><a >Lucky Borrow</a> &copy; 2021 </span>
-        <span className="ml-auto">Powered by <a>DSC Undip</a></span>
+        <span><a >COVID BOT</a> &copy; 2021 </span>
+        <span className="ml-auto">Powered by <a>CORE UI Template</a></span>
       </React.Fragment>
     );
   }
