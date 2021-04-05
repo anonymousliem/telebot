@@ -32,3 +32,4 @@ app.listen(port, () => {
   console.log("Server started on port 4000..." + process.env.DB_HOST + "asasa");
   //console.log(process.env.DB_HOST)
 });
+

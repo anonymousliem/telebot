@@ -213,8 +213,8 @@ class Tables extends Component {
       return (
         <tr key={results.id_keyword} data-category={results.id_keyword}>
           <td>{results.keyword}</td>
-          <td>{results.results}</td>
-          <td>
+          <td style={{width:'1200px'}}>{results.results.substring(0,200)+"..."}</td>
+          <td style={{width:'300px'}}>
             <Button
               className="btn btn-info"
               onClick={() => this.infoDetails(results)}
@@ -309,22 +309,22 @@ class Tables extends Component {
             <Modal.Title>DETAILS</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <table responsive striped>
-              <thead></thead>
-              <tbody>
-                <tr>
-                  <td>Keyword</td>
-                  <td>:</td>
-                  <td>{this.state.keyword}</td>
-                </tr>
-
-                <tr>
-                  <td>Result</td>
-                  <td>:</td>
-                  <td>{this.state.hasil}</td>
-                </tr>
-              </tbody>
-            </table>
+            <Form>
+              Keyword
+              <InputGroup className="mb-3">
+                <Input
+                  type="text" readOnly
+                  placeholder={this.state.keyword}
+                />
+              </InputGroup>
+              Result
+              <InputGroup className="mb-3">
+                <Input style={{height : '550px'}}
+                  type="textarea" readOnly
+                  placeholder={this.state.hasil}
+                />
+              </InputGroup>
+            </Form>
           </Modal.Body>
           <Modal.Footer>
             <Button className="btn btn-secondary" onClick={this.handleClose}>
