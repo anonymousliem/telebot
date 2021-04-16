@@ -354,6 +354,7 @@ class Tables extends Component {
                   type="textarea"
                   onChange={this.handleResults}
                   placeholder={this.state.hasil}
+                  value={this.state.hasil}
                 />
               </InputGroup>
             </Form>

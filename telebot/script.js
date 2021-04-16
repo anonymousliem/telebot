@@ -31,11 +31,11 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
 
     function connectToDatabase() {
       const connection = mysql.createConnection({
-        host: "4.tcp.ngrok.io",
+        host: "8.tcp.ngrok.io",
         user: "root",
         password: "",
         database: "telebot",
-        port: "10707",
+        port: "14201",
       });
       return new Promise((resolve, reject) => {
         connection.connect();
@@ -394,9 +394,237 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
       });
     }
     /** akhir function*/
-    
+
     /** awal function*/
     function MenularKotoran(agent) {
+      return connectToDatabase().then((connection) => {
+        return queryDatabase(connection).then((result) => {
+          console.log(result);
+          if (result.length === 0) {
+            agent.add("keyword tidak ditemukan di database");
+          }
+          result.map((content) => {
+            if (keywords === content.keyword) {
+              agent.add(`${content.results}`);
+            }
+          });
+          connection.end();
+        });
+      });
+    }
+    /** akhir function*/
+
+    /** awal function*/
+    function apakahVaksinObat(agent) {
+      return connectToDatabase().then((connection) => {
+        return queryDatabase(connection).then((result) => {
+          console.log(result);
+          if (result.length === 0) {
+            agent.add("keyword tidak ditemukan di database");
+          }
+          result.map((content) => {
+            if (keywords === content.keyword) {
+              agent.add(`${content.results}`);
+            }
+          });
+          connection.end();
+        });
+      });
+    }
+    /** akhir function*/
+
+    /** awal function*/
+    function caraKerjaVaksin(agent) {
+      return connectToDatabase().then((connection) => {
+        return queryDatabase(connection).then((result) => {
+          console.log(result);
+          if (result.length === 0) {
+            agent.add("keyword tidak ditemukan di database");
+          }
+          result.map((content) => {
+            if (keywords === content.keyword) {
+              agent.add(`${content.results}`);
+            }
+          });
+          connection.end();
+        });
+      });
+    }
+    /** akhir function*/
+
+    /** awal function*/
+    function biayaVaksin(agent) {
+      return connectToDatabase().then((connection) => {
+        return queryDatabase(connection).then((result) => {
+          console.log(result);
+          if (result.length === 0) {
+            agent.add("keyword tidak ditemukan di database");
+          }
+          result.map((content) => {
+            if (keywords === content.keyword) {
+              agent.add(`${content.results}`);
+            }
+          });
+          connection.end();
+        });
+      });
+    }
+    /** akhir function*/
+
+    /** awal function*/
+    function kandunganVaksin(agent) {
+      return connectToDatabase().then((connection) => {
+        return queryDatabase(connection).then((result) => {
+          console.log(result);
+          if (result.length === 0) {
+            agent.add("keyword tidak ditemukan di database");
+          }
+          result.map((content) => {
+            if (keywords === content.keyword) {
+              agent.add(`${content.results}`);
+            }
+          });
+          connection.end();
+        });
+      });
+    }
+    /** akhir function*/
+
+    /** awal function*/
+    function pengertianVaksinasi(agent) {
+      return connectToDatabase().then((connection) => {
+        return queryDatabase(connection).then((result) => {
+          console.log(result);
+          if (result.length === 0) {
+            agent.add("keyword tidak ditemukan di database");
+          }
+          result.map((content) => {
+            if (keywords === content.keyword) {
+              agent.add(`${content.results}`);
+            }
+          });
+          connection.end();
+        });
+      });
+    }
+    /** akhir function*/
+
+    /** awal function*/
+    function pengembanganVaksin(agent) {
+      return connectToDatabase().then((connection) => {
+        return queryDatabase(connection).then((result) => {
+          console.log(result);
+          if (result.length === 0) {
+            agent.add("keyword tidak ditemukan di database");
+          }
+          result.map((content) => {
+            if (keywords === content.keyword) {
+              agent.add(`${content.results}`);
+            }
+          });
+          connection.end();
+        });
+      });
+    }
+    /** akhir function*/
+
+    /** awal function*/
+    function vaksinHalal(agent) {
+      return connectToDatabase().then((connection) => {
+        return queryDatabase(connection).then((result) => {
+          console.log(result);
+          if (result.length === 0) {
+            agent.add("keyword tidak ditemukan di database");
+          }
+          result.map((content) => {
+            if (keywords === content.keyword) {
+              agent.add(`${content.results}`);
+            }
+          });
+          connection.end();
+        });
+      });
+    }
+    /** akhir function*/
+
+    /** awal function*/
+    function efekSampingVaksin(agent) {
+      return connectToDatabase().then((connection) => {
+        return queryDatabase(connection).then((result) => {
+          console.log(result);
+          if (result.length === 0) {
+            agent.add("keyword tidak ditemukan di database");
+          }
+          result.map((content) => {
+            if (keywords === content.keyword) {
+              agent.add(`${content.results}`);
+            }
+          });
+          connection.end();
+        });
+      });
+    }
+    /** akhir function*/
+
+    /** awal function*/
+    function caraMendapatkanVaksin(agent) {
+      return connectToDatabase().then((connection) => {
+        return queryDatabase(connection).then((result) => {
+          console.log(result);
+          if (result.length === 0) {
+            agent.add("keyword tidak ditemukan di database");
+          }
+          result.map((content) => {
+            if (keywords === content.keyword) {
+              agent.add(`${content.results}`);
+            }
+          });
+          connection.end();
+        });
+      });
+    }
+    /** akhir function*/
+
+    /** awal function*/
+    function jenisVaksin(agent) {
+      return connectToDatabase().then((connection) => {
+        return queryDatabase(connection).then((result) => {
+          console.log(result);
+          if (result.length === 0) {
+            agent.add("keyword tidak ditemukan di database");
+          }
+          result.map((content) => {
+            if (keywords === content.keyword) {
+              agent.add(`${content.results}`);
+            }
+          });
+          connection.end();
+        });
+      });
+    }
+    /** akhir function*/
+
+    /** awal function*/
+    function caraMencuciTangan(agent) {
+      return connectToDatabase().then((connection) => {
+        return queryDatabase(connection).then((result) => {
+          console.log(result);
+          if (result.length === 0) {
+            agent.add("keyword tidak ditemukan di database");
+          }
+          result.map((content) => {
+            if (keywords === content.keyword) {
+              agent.add(`${content.results}`);
+            }
+          });
+          connection.end();
+        });
+      });
+    }
+    /** akhir function*/
+
+    /** awal function*/
+    function pengertianVirusCorona(agent) {
       return connectToDatabase().then((connection) => {
         return queryDatabase(connection).then((result) => {
           console.log(result);
@@ -468,7 +696,19 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
     intentMap.set("CuciBuahSayur", CuciBuahSayur);
     intentMap.set("Antibiotik", Antibiotik);
     intentMap.set("MenularKotoran", MenularKotoran);
-	
+    intentMap.set("apakahVaksinObat", apakahVaksinObat);
+    intentMap.set("caraKerjaVaksin", caraKerjaVaksin);
+    intentMap.set("biayaVaksin", biayaVaksin);
+    intentMap.set("kandunganVaksin", kandunganVaksin);
+    intentMap.set("pengertianVaksinasi", pengertianVaksinasi);
+    intentMap.set("pengembanganVaksin", pengembanganVaksin);
+    intentMap.set("vaksinHalal", vaksinHalal);
+    intentMap.set("efekSampingVaksin", efekSampingVaksin);
+    intentMap.set("caraMendapatkanVaksin", caraMendapatkanVaksin);
+    intentMap.set("jenisVaksin", jenisVaksin);
+    intentMap.set("caraMencuciTangan", caraMencuciTangan);
+    intentMap.set("pengertianVirusCorona", pengertianVirusCorona);
+
     // intentMap.set('your intent name here', yourFunctionHandler);
     // intentMap.set('your intent name here', googleAssistantHandler);
     agent.handleRequest(intentMap);
