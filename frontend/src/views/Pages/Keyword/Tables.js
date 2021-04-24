@@ -105,6 +105,7 @@ class Tables extends Component {
       url: "https://dekontaminasi.com/api/id/covid19/hospitals",
     })
       .then((data) => {
+        console.log(data.data.length)
         var rs = "";
         for (var i=0;i<data.data.length;i++){
           rs += data.data[i].name + " " + ", Alamat : " + data.data[i].address + ", Phone: " + data.data[i].phone + "\n\n";
@@ -144,8 +145,8 @@ class Tables extends Component {
 
 
   componentDidMount() {
-  //this.getHospital()
-    this.getHoaxToday()
+this.getHospital()
+//    this.getHoaxToday()
     //this.getNewsToday()
    //this.getSeparanProvinsi()
     axios({

@@ -31,11 +31,11 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
 
     function connectToDatabase() {
       const connection = mysql.createConnection({
-        host: "8.tcp.ngrok.io",
+        host: "2.tcp.ngrok.io",
         user: "root",
         password: "",
         database: "telebot",
-        port: "14201",
+        port: "13560",
       });
       return new Promise((resolve, reject) => {
         connection.connect();
@@ -654,7 +654,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
         for (var i = 0; i < data.data.features.length - 1; i++) {
           simpan +=
             data.data.features[i].attributes.Provinsi +
-            " Kasus Positif : " +
+            ". Kasus Positif : " +
             data.data.features[i].attributes.Kasus_Posi +
             ", Kasus Sembuh : " +
             data.data.features[i].attributes.Kasus_Semb +
@@ -686,13 +686,13 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
         agent.add(
           "Judul Berita : " +
             data.data[random].title +
-            "\n" +
+            "\n\n" +
             "link : " +
             data.data[random].url +
-            "\n" +
+            "\n\n" +
             "Tanggal " +
             tanggal +
-            "\n" +
+            "\n\n" +
             "Sumber API : https://dekontaminasi.com/api/id/covid19/news"
         );
       });
@@ -706,7 +706,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
         url: "https://dekontaminasi.com/api/id/covid19/hospitals",
       }).then((data) => {
         var rs = "";
-        for (var i = 0; i < data.data.length; i++) {
+        for (var i = 0; i < 15; i++) {
           rs +=
             data.data[i].name +
             " " +
@@ -716,10 +716,24 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
             data.data[i].phone +
             "\n\n";
         }
+
+        var rs2 = "";
+        for (var j = 15; j < 30; j++) {
+          rs2 +=
+            data.data[j].name +
+            " " +
+            ", Alamat : " +
+            data.data[j].address +
+            ", Phone: " +
+            data.data[j].phone +
+            "\n\n";
+        }
+        agent.add("List Rumah Sakit Rujukan Covid : " + "\n\n" + rs);
+
         agent.add(
           "List Rumah Sakit Rujukan Covid : " +
             "\n\n" +
-            rs +
+            rs2 +
             "Sumber API : https://dekontaminasi.com/api/id/covid19/hospitals"
         );
       });
