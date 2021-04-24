@@ -105,13 +105,12 @@ class Tables extends Component {
       url: "https://dekontaminasi.com/api/id/covid19/hospitals",
     })
       .then((data) => {
+        var rs = "";
         for (var i=0;i<data.data.length;i++){
-          console.log("Nama : " + data.data[i].name + " " + ", Alamat : " + data.data[i].address + ", Phone: " + data.data[i].phone);
+          rs += data.data[i].name + " " + ", Alamat : " + data.data[i].address + ", Phone: " + data.data[i].phone + "\n\n";
         }
-        console.log("Sumber API : https://dekontaminasi.com/api/id/covid19/hospitals")
-        this.setState({
-          loading: true,
-        });
+        console.log(rs);
+        console.log("Sumber API : https://dekontaminasi.com/api/id/covid19/hospitals");
       })
 
   }
@@ -138,10 +137,6 @@ class Tables extends Component {
         var random = Math.floor(Math.random() * data.data.length) + 1
         var tanggal = new Date(data.data[random].timestamp).toLocaleDateString("id")
         console.log("Judul Berita : " + data.data[random].title + "\n" + "link : "  + data.data[random].url + "\n"  + "Tanggal " + tanggal + "\n" + "Sumber API : https://dekontaminasi.com/api/id/covid19/hoaxes")
-   
-        this.setState({
-          loading: true,
-        });
       })
 
   }
@@ -149,10 +144,10 @@ class Tables extends Component {
 
 
   componentDidMount() {
-  //  this.getHospital()
-    //this.getHoaxToday()
+  //this.getHospital()
+    this.getHoaxToday()
     //this.getNewsToday()
-   this.getSeparanProvinsi()
+   //this.getSeparanProvinsi()
     axios({
       method: "get",
       url: urlKeyword,

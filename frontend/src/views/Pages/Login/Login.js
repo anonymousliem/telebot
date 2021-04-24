@@ -79,7 +79,7 @@ class Login extends Component {
         data: Data,
       })
         .then((data) => {
-          console.log(data)
+          //console.log(data)
           var token = data.data.token;
           //var id_account = data.data.response[0].id_account;
 

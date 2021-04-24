@@ -641,20 +641,113 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
       });
     }
     /** akhir function*/
-    
+
     /** awal function*/
     function InfoCovidProvinsi(agent) {
-      return  axios({
-      method: "get",
-      url: "https://services5.arcgis.com/VS6HdKS0VfIhv8Ct/arcgis/rest/services/COVID19_Indonesia_per_Provinsi/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=json",
-    })
-      .then((data) => {
+      return axios({
+        method: "get",
+        url:
+          "https://services5.arcgis.com/VS6HdKS0VfIhv8Ct/arcgis/rest/services/COVID19_Indonesia_per_Provinsi/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=json",
+      }).then((data) => {
         var simpan = "";
-      
-        for (var i=0;i<data.data.features.length;i++){
-          simpan +=data.data.features[i].attributes.Provinsi + " Kasus Positif : " + data.data.features[i].attributes.Kasus_Posi + ", Kasus Sembuh : " + data.data.features[i].attributes.Kasus_Semb + ", Kasus meninggal : " + data.data.features[i].attributes.Kasus_Meni + "\n\n";
+
+        for (var i = 0; i < data.data.features.length - 1; i++) {
+          simpan +=
+            data.data.features[i].attributes.Provinsi +
+            " Kasus Positif : " +
+            data.data.features[i].attributes.Kasus_Posi +
+            ", Kasus Sembuh : " +
+            data.data.features[i].attributes.Kasus_Semb +
+            ", Kasus meninggal : " +
+            data.data.features[i].attributes.Kasus_Meni +
+            "\n\n";
         }
-        agent.add(simpan);
+        agent.add(
+          "List Data Covid Per Provinsi " +
+            "\n\n" +
+            simpan +
+            "\n" +
+            "SUMBER : https://bnpb-inacovid19.hub.arcgis.com/datasets/data-harian-kasus-per-provinsi-covid-19-indonesia/geoservice?selectedAttribute=Provinsi"
+        );
+      });
+    }
+    /** akhir function*/
+
+    /** awal function*/
+    function infoBeritaCovid(agent) {
+      return axios({
+        method: "get",
+        url: "https://dekontaminasi.com/api/id/covid19/news",
+      }).then((data) => {
+        var random = Math.floor(Math.random() * data.data.length) + 1;
+        var tanggal = new Date(data.data[random].timestamp).toLocaleDateString(
+          "id"
+        );
+        agent.add(
+          "Judul Berita : " +
+            data.data[random].title +
+            "\n" +
+            "link : " +
+            data.data[random].url +
+            "\n" +
+            "Tanggal " +
+            tanggal +
+            "\n" +
+            "Sumber API : https://dekontaminasi.com/api/id/covid19/news"
+        );
+      });
+    }
+    /** akhir function*/
+
+    /** awal function*/
+    function infoRumahSakit(agent) {
+      return axios({
+        method: "get",
+        url: "https://dekontaminasi.com/api/id/covid19/hospitals",
+      }).then((data) => {
+        var rs = "";
+        for (var i = 0; i < data.data.length; i++) {
+          rs +=
+            data.data[i].name +
+            " " +
+            ", Alamat : " +
+            data.data[i].address +
+            ", Phone: " +
+            data.data[i].phone +
+            "\n\n";
+        }
+        agent.add(
+          "List Rumah Sakit Rujukan Covid : " +
+            "\n\n" +
+            rs +
+            "Sumber API : https://dekontaminasi.com/api/id/covid19/hospitals"
+        );
+      });
+    }
+    /** akhir function*/
+
+    /** awal function*/
+    function infoHoaxCovid(agent) {
+      return axios({
+        method: "get",
+        url: "https://dekontaminasi.com/api/id/covid19/hoaxes",
+      }).then((data) => {
+        var random = Math.floor(Math.random() * data.data.length) + 1;
+        var tanggal = new Date(data.data[random].timestamp).toLocaleDateString(
+          "id"
+        );
+        agent.add(
+          "Judul Berita : " +
+            data.data[random].title +
+            "\n" +
+            "link : " +
+            data.data[random].url +
+            "\n" +
+            "Tanggal " +
+            tanggal +
+            "\n" +
+            "Sumber API : https://dekontaminasi.com/api/id/covid19/hoaxes"
+        );
       });
     }
     /** akhir function*/
@@ -725,7 +818,11 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
     intentMap.set("jenisVaksin", jenisVaksin);
     intentMap.set("caraMencuciTangan", caraMencuciTangan);
     intentMap.set("pengertianVirusCorona", pengertianVirusCorona);
- 	intentMap.set("InfoCovidProvinsi", InfoCovidProvinsi);
+    intentMap.set("InfoCovidProvinsi", InfoCovidProvinsi);
+    intentMap.set("infoBeritaCovid", infoBeritaCovid);
+    intentMap.set("infoRumahSakit", infoRumahSakit);
+    intentMap.set("infoHoaxCovid", infoHoaxCovid);
+
     // intentMap.set('your intent name here', yourFunctionHandler);
     // intentMap.set('your intent name here', googleAssistantHandler);
     agent.handleRequest(intentMap);
