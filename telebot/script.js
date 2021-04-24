@@ -641,6 +641,23 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
       });
     }
     /** akhir function*/
+    
+    /** awal function*/
+    function InfoCovidProvinsi(agent) {
+      return  axios({
+      method: "get",
+      url: "https://services5.arcgis.com/VS6HdKS0VfIhv8Ct/arcgis/rest/services/COVID19_Indonesia_per_Provinsi/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=json",
+    })
+      .then((data) => {
+        var simpan = "";
+      
+        for (var i=0;i<data.data.features.length;i++){
+          simpan +=data.data.features[i].attributes.Provinsi + " Kasus Positif : " + data.data.features[i].attributes.Kasus_Posi + ", Kasus Sembuh : " + data.data.features[i].attributes.Kasus_Semb + ", Kasus meninggal : " + data.data.features[i].attributes.Kasus_Meni + "\n\n";
+        }
+        agent.add(simpan);
+      });
+    }
+    /** akhir function*/
 
     // // Uncomment and edit to make your own intent handler
     // // uncomment `intentMap.set('your intent name here', yourFunctionHandler);`
@@ -708,7 +725,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
     intentMap.set("jenisVaksin", jenisVaksin);
     intentMap.set("caraMencuciTangan", caraMencuciTangan);
     intentMap.set("pengertianVirusCorona", pengertianVirusCorona);
-
+ 	intentMap.set("InfoCovidProvinsi", InfoCovidProvinsi);
     // intentMap.set('your intent name here', yourFunctionHandler);
     // intentMap.set('your intent name here', googleAssistantHandler);
     agent.handleRequest(intentMap);

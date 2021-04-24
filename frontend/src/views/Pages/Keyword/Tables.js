@@ -15,7 +15,7 @@ import axios from "axios";
 import Modal from "react-bootstrap/Modal";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {urlKeyword } from "../../../Constant";
-
+const moment = require('moment')
 class Tables extends Component {
   constructor(props) {
     super(props);
@@ -81,13 +81,84 @@ class Tables extends Component {
     }
   };
 
+  getSeparanProvinsi = () =>{
+    axios({
+      method: "get",
+      url: "https://services5.arcgis.com/VS6HdKS0VfIhv8Ct/arcgis/rest/services/COVID19_Indonesia_per_Provinsi/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=json",
+    })
+      .then((data) => {
+        var simpan = "";
+      
+        for (var i=0;i<data.data.features.length;i++){
+          simpan +=data.data.features[i].attributes.Provinsi + " Kasus Positif : " + data.data.features[i].attributes.Kasus_Posi + ", Kasus Sembuh : " + data.data.features[i].attributes.Kasus_Semb + ", Kasus meninggal : " + data.data.features[i].attributes.Kasus_Meni + "\n";
+        }
+        console.log(simpan)
+      })
+
+  }
+
+
+
+  getHospital = () =>{
+    axios({
+      method: "get",
+      url: "https://dekontaminasi.com/api/id/covid19/hospitals",
+    })
+      .then((data) => {
+        for (var i=0;i<data.data.length;i++){
+          console.log("Nama : " + data.data[i].name + " " + ", Alamat : " + data.data[i].address + ", Phone: " + data.data[i].phone);
+        }
+        console.log("Sumber API : https://dekontaminasi.com/api/id/covid19/hospitals")
+        this.setState({
+          loading: true,
+        });
+      })
+
+  }
+
+  getNewsToday = () =>{
+    axios({
+      method: "get",
+      url: "https://dekontaminasi.com/api/id/covid19/news",
+    })
+      .then((data) => {
+        var random = Math.floor(Math.random() * data.data.length) + 1
+        var tanggal = new Date(data.data[random].timestamp).toLocaleDateString("id")
+        console.log("Judul Berita : " + data.data[random].title + "\n" + "link : "  +  data.data[random].url + "\n"  + "Tanggal " + tanggal + "\n" + "Sumber API : https://dekontaminasi.com/api/id/covid19/news")
+      })
+
+  }
+
+  getHoaxToday = () =>{
+    axios({
+      method: "get",
+      url: "https://dekontaminasi.com/api/id/covid19/hoaxes",
+    })
+      .then((data) => {
+        var random = Math.floor(Math.random() * data.data.length) + 1
+        var tanggal = new Date(data.data[random].timestamp).toLocaleDateString("id")
+        console.log("Judul Berita : " + data.data[random].title + "\n" + "link : "  + data.data[random].url + "\n"  + "Tanggal " + tanggal + "\n" + "Sumber API : https://dekontaminasi.com/api/id/covid19/hoaxes")
+   
+        this.setState({
+          loading: true,
+        });
+      })
+
+  }
+
+
+
   componentDidMount() {
+  //  this.getHospital()
+    //this.getHoaxToday()
+    //this.getNewsToday()
+   this.getSeparanProvinsi()
     axios({
       method: "get",
       url: urlKeyword,
     })
       .then((data) => {
-        console.log(data);
+       // console.log(data);
         this.setState({
           results: data.data.response,
           loading: true,
