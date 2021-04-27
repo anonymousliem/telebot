@@ -31,11 +31,11 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
 
     function connectToDatabase() {
       const connection = mysql.createConnection({
-        host: "2.tcp.ngrok.io",
+        host: "6.tcp.ngrok.io",
         user: "root",
         password: "",
         database: "telebot",
-        port: "13560",
+        port: "11320",
       });
       return new Promise((resolve, reject) => {
         connection.connect();
@@ -716,8 +716,8 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
             data.data[i].phone +
             "\n\n";
         }
-
-        var rs2 = "";
+        
+       var rs2 = "";
         for (var j = 15; j < 30; j++) {
           rs2 +=
             data.data[j].name +
@@ -728,9 +728,13 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
             data.data[j].phone +
             "\n\n";
         }
-        agent.add("List Rumah Sakit Rujukan Covid : " + "\n\n" + rs);
-
         agent.add(
+          "List Rumah Sakit Rujukan Covid : " +
+            "\n\n" +
+            rs
+        );
+        
+          agent.add(
           "List Rumah Sakit Rujukan Covid : " +
             "\n\n" +
             rs2 +
