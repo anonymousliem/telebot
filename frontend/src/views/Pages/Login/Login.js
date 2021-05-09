@@ -79,15 +79,21 @@ class Login extends Component {
         data: Data,
       })
         .then((data) => {
-          //console.log(data)
-          var token = data.data.token;
-          //var id_account = data.data.response[0].id_account;
-
-          sessionStorage.setItem("token", token);
-          sessionStorage.setItem("logged", true);
-          //sessionStorage.setItem("id_session", id_account);
-
-          this.props.history.push("/keyword/list");
+          console.log(data.data.response.length)
+          if (data.data.response.length === 0){
+            alert("email atau password salah");
+          }else{
+            var token = data.data.token;
+            //var id_account = data.data.response[0].id_account;
+  
+            sessionStorage.setItem("token", token);
+            sessionStorage.setItem("logged", true);
+            //sessionStorage.setItem("id_session", id_account);
+  
+            
+            this.props.history.push("/keyword/list");
+          }
+          
         })
         .catch((err) => {
           alert("email atau password salah");

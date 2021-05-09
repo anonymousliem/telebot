@@ -35,7 +35,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
         user: "root",
         password: "",
         database: "telebot",
-        port: "11320",
+        port: "18417",
       });
       return new Promise((resolve, reject) => {
         connection.connect();
@@ -58,9 +58,9 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
       return connectToDatabase().then((connection) => {
         return queryDatabase(connection).then((result) => {
           if (result === undefined) {
-            agent.add(`Basis data gagal  terhubung`);
+            agent.add(`Basis-data gagal  terhubung`);
           } else {
-            agent.add(`Basis data berhasil terhubung`);
+            agent.add(`Basis-data berhasil terhubung`);
             connection.end();
           }
         });
@@ -84,7 +84,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
         },
       }).then((response) => {
         agent.add(
-          "Data covid di " +
+          "Data Covid-19 di " +
             response.data.response[0].country +
             `\n` +
             "tanggal : " +
@@ -117,7 +117,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
         return queryDatabase(connection).then((result) => {
           console.log("hasilnya adalahhh : " + result);
           if (result.length === 0) {
-            agent.add("keyword tidak ditemukan di database");
+            agent.add("kata-kunci tidak ditemukan di basis-data");
           }
           result.map((content) => {
             if (keywords === content.keyword) {
@@ -135,7 +135,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
         return queryDatabase(connection).then((result) => {
           console.log(result);
           if (result.length === 0) {
-            agent.add("keyword tidak ditemukan di database");
+            agent.add("kata-kunci tidak ditemukan di basis-data");
           }
           result.map((content) => {
             if (keywords === content.keyword) {
@@ -154,7 +154,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
         return queryDatabase(connection).then((result) => {
           console.log(result);
           if (result.length === 0) {
-            agent.add("keyword tidak ditemukan di database");
+            agent.add("kata-kunci tidak ditemukan di basis-data");
           }
           result.map((content) => {
             if (keywords === content.keyword) {
@@ -173,7 +173,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
         return queryDatabase(connection).then((result) => {
           console.log(result);
           if (result.length === 0) {
-            agent.add("keyword tidak ditemukan di database");
+            agent.add("kata-kunci tidak ditemukan di basis-data");
           }
           result.map((content) => {
             if (keywords === content.keyword) {
@@ -192,7 +192,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
         return queryDatabase(connection).then((result) => {
           console.log(result);
           if (result.length === 0) {
-            agent.add("keyword tidak ditemukan di database");
+            agent.add("kata-kunci tidak ditemukan di basis-data");
           }
           result.map((content) => {
             if (keywords === content.keyword) {
@@ -211,7 +211,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
         return queryDatabase(connection).then((result) => {
           console.log(result);
           if (result.length === 0) {
-            agent.add("keyword tidak ditemukan di database");
+            agent.add("kata-kunci tidak ditemukan di basis-data");
           }
           result.map((content) => {
             if (keywords === content.keyword) {
@@ -230,7 +230,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
         return queryDatabase(connection).then((result) => {
           console.log(result);
           if (result.length === 0) {
-            agent.add("keyword tidak ditemukan di database");
+            agent.add("kata-kunci tidak ditemukan di basis-data");
           }
           result.map((content) => {
             if (keywords === content.keyword) {
@@ -249,7 +249,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
         return queryDatabase(connection).then((result) => {
           console.log(result);
           if (result.length === 0) {
-            agent.add("keyword tidak ditemukan di database");
+            agent.add("kata-kunci tidak ditemukan di basis-data");
           }
           result.map((content) => {
             if (keywords === content.keyword) {
@@ -268,7 +268,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
         return queryDatabase(connection).then((result) => {
           console.log(result);
           if (result.length === 0) {
-            agent.add("keyword tidak ditemukan di database");
+            agent.add("kata-kunci tidak ditemukan di basis-data");
           }
           result.map((content) => {
             if (keywords === content.keyword) {
@@ -287,7 +287,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
         return queryDatabase(connection).then((result) => {
           console.log(result);
           if (result.length === 0) {
-            agent.add("keyword tidak ditemukan di database");
+            agent.add("kata-kunci tidak ditemukan di basis-data");
           }
           result.map((content) => {
             if (keywords === content.keyword) {
@@ -306,7 +306,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
         return queryDatabase(connection).then((result) => {
           console.log(result);
           if (result.length === 0) {
-            agent.add("keyword tidak ditemukan di database");
+            agent.add("kata-kunci tidak ditemukan di basis-data");
           }
           result.map((content) => {
             if (keywords === content.keyword) {
@@ -325,7 +325,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
         return queryDatabase(connection).then((result) => {
           console.log(result);
           if (result.length === 0) {
-            agent.add("keyword tidak ditemukan di database");
+            agent.add("kata-kunci tidak ditemukan di basis-data");
           }
           result.map((content) => {
             if (keywords === content.keyword) {
@@ -344,7 +344,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
         return queryDatabase(connection).then((result) => {
           console.log(result);
           if (result.length === 0) {
-            agent.add("keyword tidak ditemukan di database");
+            agent.add("kata-kunci tidak ditemukan di basis-data");
           }
           result.map((content) => {
             if (keywords === content.keyword) {
@@ -363,7 +363,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
         return queryDatabase(connection).then((result) => {
           console.log(result);
           if (result.length === 0) {
-            agent.add("keyword tidak ditemukan di database");
+            agent.add("kata-kunci tidak ditemukan di basis-data");
           }
           result.map((content) => {
             if (keywords === content.keyword) {
@@ -382,7 +382,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
         return queryDatabase(connection).then((result) => {
           console.log(result);
           if (result.length === 0) {
-            agent.add("keyword tidak ditemukan di database");
+            agent.add("kata-kunci tidak ditemukan di basis-data");
           }
           result.map((content) => {
             if (keywords === content.keyword) {
@@ -401,7 +401,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
         return queryDatabase(connection).then((result) => {
           console.log(result);
           if (result.length === 0) {
-            agent.add("keyword tidak ditemukan di database");
+            agent.add("kata-kunci tidak ditemukan di basis-data");
           }
           result.map((content) => {
             if (keywords === content.keyword) {
@@ -420,7 +420,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
         return queryDatabase(connection).then((result) => {
           console.log(result);
           if (result.length === 0) {
-            agent.add("keyword tidak ditemukan di database");
+            agent.add("kata-kunci tidak ditemukan di basis-data");
           }
           result.map((content) => {
             if (keywords === content.keyword) {
@@ -439,7 +439,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
         return queryDatabase(connection).then((result) => {
           console.log(result);
           if (result.length === 0) {
-            agent.add("keyword tidak ditemukan di database");
+            agent.add("kata-kunci tidak ditemukan di basis-data");
           }
           result.map((content) => {
             if (keywords === content.keyword) {
@@ -458,7 +458,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
         return queryDatabase(connection).then((result) => {
           console.log(result);
           if (result.length === 0) {
-            agent.add("keyword tidak ditemukan di database");
+            agent.add("kata-kunci tidak ditemukan di basis-data");
           }
           result.map((content) => {
             if (keywords === content.keyword) {
@@ -477,7 +477,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
         return queryDatabase(connection).then((result) => {
           console.log(result);
           if (result.length === 0) {
-            agent.add("keyword tidak ditemukan di database");
+            agent.add("kata-kunci tidak ditemukan di basis-data");
           }
           result.map((content) => {
             if (keywords === content.keyword) {
@@ -496,7 +496,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
         return queryDatabase(connection).then((result) => {
           console.log(result);
           if (result.length === 0) {
-            agent.add("keyword tidak ditemukan di database");
+            agent.add("kata-kunci tidak ditemukan di basis-data");
           }
           result.map((content) => {
             if (keywords === content.keyword) {
@@ -515,7 +515,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
         return queryDatabase(connection).then((result) => {
           console.log(result);
           if (result.length === 0) {
-            agent.add("keyword tidak ditemukan di database");
+            agent.add("kata-kunci tidak ditemukan di basis-data");
           }
           result.map((content) => {
             if (keywords === content.keyword) {
@@ -534,7 +534,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
         return queryDatabase(connection).then((result) => {
           console.log(result);
           if (result.length === 0) {
-            agent.add("keyword tidak ditemukan di database");
+            agent.add("kata-kunci tidak ditemukan di basis-data");
           }
           result.map((content) => {
             if (keywords === content.keyword) {
@@ -553,7 +553,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
         return queryDatabase(connection).then((result) => {
           console.log(result);
           if (result.length === 0) {
-            agent.add("keyword tidak ditemukan di database");
+            agent.add("kata-kunci tidak ditemukan di basis-data");
           }
           result.map((content) => {
             if (keywords === content.keyword) {
@@ -572,7 +572,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
         return queryDatabase(connection).then((result) => {
           console.log(result);
           if (result.length === 0) {
-            agent.add("keyword tidak ditemukan di database");
+            agent.add("kata-kunci tidak ditemukan di basis-data");
           }
           result.map((content) => {
             if (keywords === content.keyword) {
@@ -591,7 +591,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
         return queryDatabase(connection).then((result) => {
           console.log(result);
           if (result.length === 0) {
-            agent.add("keyword tidak ditemukan di database");
+            agent.add("kata-kunci tidak ditemukan di basis-data");
           }
           result.map((content) => {
             if (keywords === content.keyword) {
@@ -610,7 +610,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
         return queryDatabase(connection).then((result) => {
           console.log(result);
           if (result.length === 0) {
-            agent.add("keyword tidak ditemukan di database");
+            agent.add("kata-kunci tidak ditemukan di basis-data");
           }
           result.map((content) => {
             if (keywords === content.keyword) {
@@ -629,7 +629,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
         return queryDatabase(connection).then((result) => {
           console.log(result);
           if (result.length === 0) {
-            agent.add("keyword tidak ditemukan di database");
+            agent.add("kata-kunci tidak ditemukan di basis-data");
           }
           result.map((content) => {
             if (keywords === content.keyword) {
@@ -663,7 +663,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
             "\n\n";
         }
         agent.add(
-          "List Data Covid Per Provinsi " +
+          "List Data Covid-19 Per Provinsi " +
             "\n\n" +
             simpan +
             "\n" +
@@ -729,13 +729,13 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
             "\n\n";
         }
         agent.add(
-          "List Rumah Sakit Rujukan Covid : " +
+          "List Rumah Sakit Rujukan Covid-19 : " +
             "\n\n" +
             rs
         );
         
           agent.add(
-          "List Rumah Sakit Rujukan Covid : " +
+          "List Rumah Sakit Rujukan Covid-19 : " +
             "\n\n" +
             rs2 +
             "Sumber API : https://dekontaminasi.com/api/id/covid19/hospitals"
