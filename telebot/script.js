@@ -4,7 +4,6 @@
 
 const functions = require("firebase-functions");
 const { WebhookClient } = require("dialogflow-fulfillment");
-const { Card, Suggestion } = require("dialogflow-fulfillment");
 const mysql = require("mysql");
 const axios = require("axios");
 var moment = require("moment");
@@ -841,8 +840,6 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
     intentMap.set("infoRumahSakit", infoRumahSakit);
     intentMap.set("infoHoaxCovid", infoHoaxCovid);
 
-    // intentMap.set('your intent name here', yourFunctionHandler);
-    // intentMap.set('your intent name here', googleAssistantHandler);
     agent.handleRequest(intentMap);
   }
 );
